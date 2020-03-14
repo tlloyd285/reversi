@@ -1,4 +1,6 @@
-/* Include the static file web server library */
+/***********************************************/
+/*      Set up static file server              */ 
+/* Include the static file web server library  */
 var static = require('node-static');
 
 /* Include the http server library */
@@ -28,3 +30,27 @@ var app = http.createServer(
 	}
 ).listen(port);
 console.log('The Server is running');
+
+/***********************************************/
+/*      Set up the web socket server           */ 
+
+var io = require('socket.io').listen(app);
+
+io.sockets.on('connection',function(socket) {
+    
+    function log(){
+        var array = ['*** Server Log Message: '];
+        for(var i = 0;  i < arguments.length; i++){
+            array.push(arguments[i]);
+            console.log(arguments[i]);
+        }
+        socket.emit('log',array);
+        socket.broadcast.emit('log',array);
+    }
+        log('A web site connected to the server');
+    
+              socket.on('disconnect',function(socket){
+        log('A web site disconnected to the server');     
+    });
+    
+}); 
