@@ -15,26 +15,27 @@
         }
 
     </style>
-    
-    
+
+
     <script>
-        function submitForm(){
+        function submitForm() {
             var username = $('#username').val();
-            window.location.href = 'lobby.html?username='+username;
+            window.location.href = 'lobby.html?username=' + username;
         }
+
     </script>
 </head>
 
 <body>
-    <div class="container-fluid text-center">
+    <div class="container-fluid">
         <div class="row" id="header-row">
-            <div class="col">
+            <div class="col text-center">
                 <h2>Enter Your Username</h2>
             </div>
         </div>
-        <div class='row'>
-            <div class='col'>
-                <form onsubmit='submitForm(); return false;' class='form-inline'>
+        <div class='row d-flex justify-content-center'>
+            <div class='col-md-3'>
+                <form onsubmit='submitForm(); return false;' class='form-inline '>
                     <div class='form-group'>
                         <label for='username' class='col-form-label sr-only'>Enter a username</label>
                         <input class='form-control' type='text' value='' id='username' placeholder="Enter your username">
